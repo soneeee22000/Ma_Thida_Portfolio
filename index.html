@@ -4,8 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thidar Maung Maung — Hydrology Researcher</title>
+<meta name="description" content="Thidar Maung Maung is a doctoral researcher in hydrology at Universite Gustave Eiffel, dedicated to understanding water systems and building nature-based solutions for a sustainable future.">
+<meta name="theme-color" content="#0B3D3F">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Thidar Maung Maung — Hydrology Researcher">
+<meta property="og:description" content="Doctoral researcher in hydrology at Universite Gustave Eiffel, dedicated to understanding water systems and nature-based solutions.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://thidarmaungmaung.netlify.app/Data/images/605637494_1517566669319007_2211441461359692543_n.jpg">
+<meta property="og:url" content="https://thidarmaungmaung.netlify.app/">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Favicon: water-drop SVG -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231A6B6D'/%3E%3Cstop offset='100%25' stop-color='%230B3D3F'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 5 C50 5 15 55 15 68 C15 87 31 98 50 98 C69 98 85 87 85 68 C85 55 50 5 50 5Z' fill='url(%23g)'/%3E%3Cellipse cx='38' cy='65' rx='10' ry='12' fill='white' opacity='0.15'/%3E%3C/svg%3E">
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- CDN Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
+<script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js"></script>
+
 <style>
 /* ============================================
    CSS VARIABLES & RESET
@@ -30,6 +57,70 @@
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode variables */
+[data-theme="dark"] {
+  --cream: #0D1B1C;
+  --cream-warm: #112224;
+  --white: #152A2C;
+  --text-dark: #E8F0F0;
+  --text-body: #C0D0D0;
+  --text-muted: #8A9A9A;
+  --shadow-soft: 0 4px 30px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] nav.scrolled {
+  background: rgba(13, 27, 28, 0.92);
+}
+
+[data-theme="dark"] .nav-logo,
+[data-theme="dark"] .nav-toggle span {
+  color: var(--river-light);
+}
+
+[data-theme="dark"] .nav-toggle span {
+  background: var(--river-light);
+}
+
+[data-theme="dark"] .hero-name {
+  color: var(--river-light);
+}
+
+[data-theme="dark"] .stat-card {
+  background: var(--cream-warm);
+}
+
+[data-theme="dark"] .skill-tag {
+  background: var(--cream-warm);
+  color: var(--text-body);
+}
+
+[data-theme="dark"] .skill-tag.highlight {
+  background: var(--river-teal);
+  color: var(--white);
+}
+
+[data-theme="dark"] .pub-card {
+  background: linear-gradient(135deg, var(--cream-warm) 0%, var(--cream) 100%);
+}
+
+[data-theme="dark"] .timeline-dot {
+  background: var(--cream);
+}
+
+[data-theme="dark"] .hero-photo-container img {
+  filter: brightness(0.9);
+}
+
+[data-theme="dark"] .parallax-divider img {
+  filter: brightness(0.7);
+}
+
+[data-theme="dark"] .gallery-item img {
+  filter: brightness(0.85);
 }
 
 *, *::before, *::after {
@@ -39,7 +130,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
 }
 
@@ -49,6 +139,27 @@ body {
   background: var(--cream);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Skip to content (accessibility) */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.75rem 1.5rem;
+  background: var(--river-deep);
+  color: var(--white);
+  border-radius: 0 0 8px 8px;
+  z-index: 9999;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+  top: 0;
 }
 
 /* ============================================
@@ -63,6 +174,49 @@ body {
   z-index: 0;
   pointer-events: none;
   opacity: 0.035;
+}
+
+/* ============================================
+   CUSTOM CURSOR (desktop only)
+   ============================================ */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--river-teal);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: difference;
+  transition: transform 0.15s;
+  opacity: 0;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--river-teal);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  mix-blend-mode: difference;
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+  opacity: 0;
+}
+
+.cursor-ring.hover {
+  width: 50px;
+  height: 50px;
+  border-color: var(--sandstone);
+}
+
+@media (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none !important; }
 }
 
 /* ============================================
@@ -97,6 +251,12 @@ nav.scrolled {
   letter-spacing: 0.02em;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .nav-links {
   display: flex;
   gap: 2.5rem;
@@ -125,12 +285,119 @@ nav.scrolled {
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--river-deep);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
   width: 100%;
+}
+
+/* Dark mode toggle */
+.theme-toggle {
+  background: none;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  color: var(--text-muted);
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--river-teal);
+  color: var(--river-teal);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.theme-toggle .icon-moon { display: block; }
+.theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 101;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--river-deep);
+  margin: 5px 0;
+  transition: all 0.3s;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem 1.5rem;
+  }
+
+  nav.scrolled {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--cream);
+    flex-direction: column;
+    padding: 5rem 2rem 2rem;
+    gap: 1.5rem;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+  }
+
+  [data-theme="dark"] .nav-links {
+    background: var(--cream);
+  }
+
+  .nav-links.show {
+    transform: translateX(0);
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
 }
 
 /* ============================================
@@ -150,7 +417,7 @@ nav.scrolled {
   border-radius: 50%;
   filter: blur(80px);
   opacity: 0.12;
-  animation: float 20s ease-in-out infinite;
+  will-change: transform;
 }
 
 .hero-bg-1 {
@@ -159,7 +426,6 @@ nav.scrolled {
   background: var(--river-teal);
   top: -10%;
   right: -5%;
-  animation-delay: 0s;
 }
 
 .hero-bg-2 {
@@ -168,7 +434,6 @@ nav.scrolled {
   background: var(--moss);
   bottom: 10%;
   left: -5%;
-  animation-delay: -7s;
 }
 
 .hero-bg-3 {
@@ -177,13 +442,6 @@ nav.scrolled {
   background: var(--sandstone);
   top: 40%;
   right: 30%;
-  animation-delay: -14s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.05); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
 }
 
 .hero-content {
@@ -202,8 +460,6 @@ nav.scrolled {
   text-transform: uppercase;
   color: var(--river-teal);
   margin-bottom: 2rem;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s 0.3s forwards;
 }
 
 .hero-tag::before {
@@ -220,8 +476,7 @@ nav.scrolled {
   color: var(--river-deep);
   line-height: 1.05;
   margin-bottom: 1.5rem;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s 0.5s forwards;
+  cursor: default;
 }
 
 .hero-name .accent {
@@ -230,23 +485,40 @@ nav.scrolled {
   font-weight: 600;
 }
 
+.hero-name .char {
+  display: inline-block;
+}
+
 .hero-subtitle {
   font-size: 1.3rem;
   font-weight: 300;
   color: var(--text-muted);
   line-height: 1.7;
   max-width: 600px;
+  margin-bottom: 0.5rem;
+  min-height: 3.5em;
+}
+
+.hero-typed-wrap {
+  min-height: 2.2em;
   margin-bottom: 2.5rem;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s 0.7s forwards;
+}
+
+.hero-typed {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--river-teal);
+  letter-spacing: 0.04em;
+}
+
+.typed-cursor {
+  color: var(--river-teal);
 }
 
 .hero-actions {
   display: flex;
   gap: 1.25rem;
   align-items: center;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s 0.9s forwards;
 }
 
 .btn-primary {
@@ -321,89 +593,63 @@ nav.scrolled {
   transform: translateY(-2px);
 }
 
-/* Hero side decoration */
-.hero-decoration {
+/* Hero photo */
+.hero-photo-container {
   position: absolute;
   right: 6vw;
   top: 50%;
   transform: translateY(-50%);
   width: 380px;
   height: 480px;
-  opacity: 0;
-  animation: fadeSlideLeft 1s 1.1s forwards;
 }
 
-.deco-frame {
+.hero-photo-frame {
   width: 100%;
   height: 100%;
   border-radius: 200px 200px 40px 40px;
-  background: linear-gradient(170deg, var(--river-teal) 0%, var(--moss) 50%, var(--sandstone) 100%);
-  position: relative;
   overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(11, 61, 63, 0.2);
 }
 
-.deco-frame::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 80%, rgba(0,0,0,0.1) 0%, transparent 50%);
-}
-
-/* Water drops animation inside deco */
-.water-drops {
-  position: absolute;
+.hero-photo-frame img {
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
+  object-fit: cover;
+  object-position: center 20%;
 }
 
-.drop {
+.hero-photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 -60px 60px -30px rgba(11, 61, 63, 0.15);
+  pointer-events: none;
+}
+
+/* Water drops floating around photo */
+.hero-drops {
+  position: absolute;
+  inset: -30px;
+  pointer-events: none;
+}
+
+.hero-drop {
   position: absolute;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  animation: dropRise linear infinite;
+  background: var(--river-teal);
+  opacity: 0.15;
+  animation: heroDropFloat linear infinite;
 }
 
-@keyframes dropRise {
-  0% { transform: translateY(100%) scale(0); opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { transform: translateY(-100%) scale(1); opacity: 0; }
+@keyframes heroDropFloat {
+  0% { transform: translateY(0) scale(1); opacity: 0.15; }
+  50% { opacity: 0.25; }
+  100% { transform: translateY(-120px) scale(0.5); opacity: 0; }
 }
 
-.deco-icon {
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 3.5rem;
-  opacity: 0.9;
-  filter: drop-shadow(0 4px 15px rgba(0,0,0,0.15));
-}
-
-.deco-pattern {
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-style: italic;
-  color: rgba(255,255,255,0.7);
-  text-align: center;
-  line-height: 1.6;
-  letter-spacing: 0.05em;
-}
-
-/* ============================================
-   SCROLL INDICATOR
-   ============================================ */
+/* Scroll indicator */
 .scroll-indicator {
   position: absolute;
   bottom: 2.5rem;
@@ -413,8 +659,6 @@ nav.scrolled {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  opacity: 0;
-  animation: fadeIn 1s 1.5s forwards;
 }
 
 .scroll-indicator span {
@@ -496,6 +740,65 @@ section {
 }
 
 /* ============================================
+   PARALLAX DIVIDERS
+   ============================================ */
+.parallax-divider {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.parallax-divider img {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11,61,63,0.4) 0%, rgba(11,61,63,0.7) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.parallax-text {
+  text-align: center;
+  color: var(--white);
+  max-width: 700px;
+  padding: 0 2rem;
+}
+
+.parallax-text h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.4;
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .parallax-divider {
+    height: 50vh;
+    min-height: 300px;
+  }
+
+  .parallax-divider img {
+    top: 0;
+    height: 100%;
+  }
+}
+
+/* ============================================
    ABOUT SECTION
    ============================================ */
 #about {
@@ -506,7 +809,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
-  align-items: center;
+  align-items: start;
 }
 
 .about-text p {
@@ -527,10 +830,34 @@ section {
   font-weight: 700;
 }
 
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.about-photo {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.about-photo img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s;
+}
+
+.about-photo:hover img {
+  transform: scale(1.03);
+}
+
 .about-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .stat-card {
@@ -563,6 +890,70 @@ section {
 }
 
 /* ============================================
+   "WHY I DO THIS" STORYTELLING SECTION
+   ============================================ */
+#mission {
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.mission-stat {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--river-deep);
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+.mission-stat-label {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.mission-text p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text-body);
+  margin-bottom: 1.5rem;
+}
+
+.mission-text p:last-child {
+  margin-bottom: 0;
+}
+
+.mission-photo {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+
+.mission-photo img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+}
+
+.mission-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(11,61,63,0.2) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* ============================================
    EDUCATION SECTION — RIVER TIMELINE
    ============================================ */
 #education {
@@ -585,6 +976,18 @@ section {
   width: 2px;
   background: linear-gradient(180deg, var(--river-light), var(--river-teal), var(--moss), var(--sandstone));
   opacity: 0.4;
+}
+
+.timeline-progress {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 2px;
+  height: 0%;
+  background: linear-gradient(180deg, var(--river-light), var(--river-teal), var(--moss), var(--sandstone));
+  opacity: 1;
+  z-index: 1;
 }
 
 .timeline-item {
@@ -623,7 +1026,8 @@ section {
 
 .timeline-item:hover .timeline-dot {
   background: var(--river-teal);
-  box-shadow: 0 0 0 6px rgba(26, 107, 109, 0.15);
+  box-shadow: 0 0 0 6px rgba(26, 107, 109, 0.15),
+              0 0 0 12px rgba(26, 107, 109, 0.06);
 }
 
 .timeline-content {
@@ -715,7 +1119,7 @@ section {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--river-light), var(--moss-light));
+  background: linear-gradient(90deg, var(--river-light), var(--moss-light), var(--sandstone));
   opacity: 0;
   transition: opacity 0.4s;
 }
@@ -728,6 +1132,11 @@ section {
 
 .exp-card:hover::before {
   opacity: 1;
+}
+
+.exp-card:hover .exp-skill {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.75);
 }
 
 .exp-org {
@@ -774,6 +1183,7 @@ section {
   color: rgba(255,255,255,0.6);
   letter-spacing: 0.04em;
   font-weight: 500;
+  transition: all 0.3s;
 }
 
 /* ============================================
@@ -799,7 +1209,7 @@ section {
 }
 
 .pub-card::before {
-  content: '"';
+  content: '\201C';
   position: absolute;
   top: -20px;
   right: 40px;
@@ -870,29 +1280,47 @@ section {
 }
 
 /* ============================================
-   SKILLS SECTION
+   SKILLS SECTION (Redesigned: Categories)
    ============================================ */
 #skills {
   background: var(--cream);
 }
 
-.skills-container {
+.skills-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1000px;
+}
+
+.skill-category h3 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--river-teal);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1.5px solid rgba(26, 107, 109, 0.15);
+}
+
+.skill-category .skills-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  max-width: 800px;
+  gap: 0.75rem;
 }
 
 .skill-tag {
-  padding: 0.75rem 1.5rem;
+  padding: 0.65rem 1.3rem;
   background: var(--white);
   border-radius: 50px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-body);
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid transparent;
   cursor: default;
+  position: relative;
 }
 
 .skill-tag:hover {
@@ -911,6 +1339,86 @@ section {
   background: var(--river-teal);
   border-color: var(--river-teal);
   color: var(--white);
+  box-shadow: 0 0 20px rgba(26, 107, 109, 0.3);
+}
+
+/* ============================================
+   PHOTO GALLERY — "IN THE FIELD"
+   ============================================ */
+#gallery {
+  background: var(--white);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
+}
+
+.gallery-item {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  aspect-ratio: 4/3;
+}
+
+.gallery-item:nth-child(1),
+.gallery-item:nth-child(6) {
+  grid-column: span 1;
+  grid-row: span 2;
+  aspect-ratio: auto;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.25rem 1.25rem;
+  background: linear-gradient(transparent, rgba(11, 61, 63, 0.8));
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transform: translateY(100%);
+  transition: transform 0.4s;
+}
+
+.gallery-item:hover .gallery-caption {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(6) {
+    grid-column: span 1;
+    grid-row: span 1;
+    aspect-ratio: 4/3;
+  }
+
+  .gallery-caption {
+    transform: translateY(0);
+    padding: 1.5rem 1rem 0.75rem;
+    font-size: 0.7rem;
+  }
 }
 
 /* ============================================
@@ -919,8 +1427,21 @@ section {
 footer {
   background: var(--river-deep);
   color: var(--white);
-  padding: 4rem 6vw;
+  padding: 0 0 2rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-wave {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 3rem;
+}
+
+.footer-inner {
+  padding: 0 6vw;
 }
 
 .footer-quote {
@@ -937,7 +1458,29 @@ footer {
 .footer-attribution {
   font-size: 0.85rem;
   color: rgba(255,255,255,0.35);
+  margin-bottom: 2rem;
+}
+
+.footer-contact {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
   margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.footer-contact a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s;
+}
+
+.footer-contact a:hover {
+  color: var(--river-light);
 }
 
 .footer-bottom {
@@ -966,45 +1509,98 @@ footer {
 }
 
 /* ============================================
-   ANIMATIONS
+   BIRTHDAY EASTER EGG
    ============================================ */
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+.birthday-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 61, 63, 0.95);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
 }
 
-@keyframes fadeSlideLeft {
-  from { opacity: 0; transform: translate(30px, -50%); }
-  to { opacity: 1; transform: translate(0, -50%); }
+.birthday-overlay.active {
+  display: flex;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.birthday-content {
+  text-align: center;
+  color: var(--white);
+  max-width: 600px;
+  padding: 3rem;
+  position: relative;
 }
 
-/* Scroll animations */
-.reveal {
+.birthday-close {
+  position: absolute;
+  top: -2rem;
+  right: -1rem;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  line-height: 1;
+}
+
+.birthday-close:hover {
+  color: var(--white);
+}
+
+.birthday-emoji {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.birthday-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--sandstone);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.birthday-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 1rem;
+}
+
+.birthday-content .birthday-sign {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--sandstone-light);
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+#birthday-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  pointer-events: none;
+}
+
+/* ============================================
+   ANIMATIONS & GSAP HELPERS
+   ============================================ */
+.gsap-reveal {
   opacity: 0;
   transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
-  .hero-decoration {
+  .hero-photo-container {
     display: none;
   }
 
@@ -1013,7 +1609,13 @@ footer {
     gap: 3rem;
   }
 
-  .timeline::before {
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .timeline::before,
+  .timeline-progress {
     left: 20px;
   }
 
@@ -1036,18 +1638,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-  nav {
-    padding: 1rem 1.5rem;
-  }
-
-  nav.scrolled {
-    padding: 0.8rem 1.5rem;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
   section {
     padding: 5rem 1.5rem;
   }
@@ -1073,51 +1663,68 @@ footer {
     flex-direction: column;
     gap: 1rem;
   }
-}
 
-/* Mobile nav toggle */
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--river-deep);
-  margin: 5px 0;
-  transition: all 0.3s;
-}
-
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
+
+  .stat-card {
+    padding: 1.25rem;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-bg-element { animation: none; opacity: 0.08; }
+  .hero-drop { animation: none; }
+  .cursor-dot, .cursor-ring { display: none !important; }
+  #water-canvas { display: none; }
+  .parallax-divider img { position: relative; top: 0; height: 100%; }
 }
 </style>
 </head>
 <body>
 
+<!-- Skip to content (accessibility) -->
+<a href="#about" class="skip-to-content">Skip to main content</a>
+
+<!-- Custom cursor (desktop) -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
 <!-- Water Canvas Background -->
-<canvas id="water-canvas"></canvas>
+<canvas id="water-canvas" aria-hidden="true"></canvas>
 
 <!-- Navigation -->
-<nav id="navbar">
+<nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-logo">T.M.M.</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#experience">Research</a></li>
-    <li><a href="#publication">Publication</a></li>
-    <li><a href="#skills">Skills</a></li>
-  </ul>
-  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Toggle navigation">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Research</a></li>
+      <li><a href="#publication">Publication</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- Hero Section -->
@@ -1127,15 +1734,18 @@ footer {
   <div class="hero-bg-element hero-bg-3"></div>
 
   <div class="hero-content">
-    <div class="hero-tag">Hydrology · Environmental Science · Research</div>
-    <h1 class="hero-name">Thidar<br>Maung <span class="accent">Maung</span></h1>
+    <div class="hero-tag">Hydrology &middot; Environmental Science &middot; Research</div>
+    <h1 class="hero-name" id="heroName">Thidar<br>Maung <span class="accent">Maung</span></h1>
     <p class="hero-subtitle">
-      Doctoral researcher in hydrology at Université Gustave Eiffel, 
-      dedicated to understanding water systems and building nature-based solutions 
+      Doctoral researcher in hydrology at Universit&eacute; Gustave Eiffel,
+      dedicated to understanding water systems and building nature-based solutions
       for a sustainable future.
     </p>
+    <div class="hero-typed-wrap">
+      <span class="hero-typed" id="heroTyped"></span>
+    </div>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="downloadResume()">
+      <button class="btn-primary" onclick="downloadResume()" aria-label="Download CV as PDF">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
@@ -1153,24 +1763,23 @@ footer {
     </div>
   </div>
 
-  <!-- Decorative element -->
-  <div class="hero-decoration">
-    <div class="deco-frame">
-      <div class="deco-pattern">Understanding<br>Earth's Water<br>Systems</div>
-      <div class="water-drops">
-        <div class="drop" style="width:8px;height:8px;left:20%;animation-duration:6s;animation-delay:0s;"></div>
-        <div class="drop" style="width:12px;height:12px;left:45%;animation-duration:8s;animation-delay:1s;"></div>
-        <div class="drop" style="width:6px;height:6px;left:70%;animation-duration:5s;animation-delay:2s;"></div>
-        <div class="drop" style="width:10px;height:10px;left:30%;animation-duration:7s;animation-delay:3s;"></div>
-        <div class="drop" style="width:7px;height:7px;left:60%;animation-duration:9s;animation-delay:0.5s;"></div>
-        <div class="drop" style="width:9px;height:9px;left:80%;animation-duration:6.5s;animation-delay:1.5s;"></div>
-        <div class="drop" style="width:5px;height:5px;left:15%;animation-duration:7.5s;animation-delay:2.5s;"></div>
-      </div>
-      <div class="deco-icon">🌊</div>
+  <!-- Hero photo -->
+  <div class="hero-photo-container" id="heroPhoto">
+    <div class="hero-drops" aria-hidden="true">
+      <div class="hero-drop" style="width:8px;height:8px;left:10%;top:20%;animation-duration:5s;animation-delay:0s;"></div>
+      <div class="hero-drop" style="width:12px;height:12px;left:85%;top:40%;animation-duration:7s;animation-delay:1s;"></div>
+      <div class="hero-drop" style="width:6px;height:6px;left:50%;top:10%;animation-duration:6s;animation-delay:2s;"></div>
+      <div class="hero-drop" style="width:10px;height:10px;left:25%;top:75%;animation-duration:8s;animation-delay:0.5s;"></div>
+      <div class="hero-drop" style="width:7px;height:7px;left:75%;top:80%;animation-duration:5.5s;animation-delay:1.5s;"></div>
+    </div>
+    <div class="hero-photo-frame">
+      <img src="Data/images/605637494_1517566669319007_2211441461359692543_n.jpg"
+           alt="Thidar Maung Maung smiling in a green meadow with autumn mountains"
+           width="380" height="480" loading="eager">
     </div>
   </div>
 
-  <div class="scroll-indicator">
+  <div class="scroll-indicator" aria-hidden="true">
     <span>Scroll</span>
     <div class="scroll-line"></div>
   </div>
@@ -1180,112 +1789,198 @@ footer {
 <section id="about">
   <div class="about-grid">
     <div class="about-text">
-      <div class="section-label reveal">About</div>
-      <h2 class="section-title reveal reveal-delay-1">Protecting Our<br>Planet's Waters</h2>
-      <p class="reveal reveal-delay-2">
-        Driven by a profound commitment to environmental sustainability, Thidar Maung Maung 
-        has built an interdisciplinary career spanning water engineering, ecosystem services, 
+      <div class="section-label gsap-reveal">About</div>
+      <h2 class="section-title gsap-reveal">Protecting Our<br>Planet's Waters</h2>
+      <p class="gsap-reveal">
+        Driven by a profound commitment to environmental sustainability, Thidar Maung Maung
+        has built an interdisciplinary career spanning water engineering, ecosystem services,
         and climate science across Southeast Asia and Europe.
       </p>
-      <p class="reveal reveal-delay-3">
-        From modeling carbon sequestration in Mekong wetlands to researching green roof 
-        hydrological systems in Paris, her work bridges the gap between computational 
-        modeling and real-world environmental impact. Now pursuing a PhD in Hydrology 
-        at Université Gustave Eiffel, she continues to push the boundaries of how 
-        we understand and protect Earth's most vital resource — water.
+      <p class="gsap-reveal">
+        From modeling carbon sequestration in Mekong wetlands to researching green roof
+        hydrological systems in Paris, her work bridges the gap between computational
+        modeling and real-world environmental impact. Now pursuing a PhD in Hydrology
+        at Universit&eacute; Gustave Eiffel, she continues to push the boundaries of how
+        we understand and protect Earth's most vital resource &mdash; water.
       </p>
     </div>
-    <div class="about-stats reveal reveal-delay-3">
-      <div class="stat-card">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Countries Worked In</div>
+    <div class="about-right">
+      <div class="about-photo gsap-reveal">
+        <img src="Data/images/607343148_1517566495985691_6591289657000329051_n.jpg"
+             alt="Thidar hiking on a golden hillside with a red backpack"
+             width="500" height="320" loading="lazy">
       </div>
-      <div class="stat-card">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Degrees Earned</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">1</div>
-        <div class="stat-label">Published Paper</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">PhD</div>
-        <div class="stat-label">In Progress</div>
+      <div class="about-stats gsap-reveal">
+        <div class="stat-card">
+          <div class="stat-number" data-countup="4">0</div>
+          <div class="stat-label">Countries Worked In</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-countup="3">0</div>
+          <div class="stat-label">Degrees Earned</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-countup="1">0</div>
+          <div class="stat-label">Published Paper</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">PhD</div>
+          <div class="stat-label">In Progress</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Parallax Divider 1: Glacier -->
+<div class="parallax-divider" aria-hidden="true">
+  <img src="Data/images/605785161_1517566025985738_5889307075634814624_n.jpg"
+       alt="" loading="lazy" class="parallax-img">
+  <div class="parallax-overlay">
+    <div class="parallax-text">
+      <h3>From the riverbanks of Myanmar to the glaciers of the Alps</h3>
+    </div>
+  </div>
+</div>
+
+<!-- "Why I Do This" Storytelling Section -->
+<section id="mission">
+  <div class="section-label gsap-reveal">The Mission</div>
+  <h2 class="section-title gsap-reveal">Why I Do This</h2>
+  <p class="section-desc gsap-reveal">Some questions are too important to leave unanswered.</p>
+
+  <div class="mission-grid">
+    <div class="mission-text">
+      <div class="mission-stat gsap-reveal">
+        <span data-countup="2.2" data-countup-decimal="1">0</span> billion
+      </div>
+      <div class="mission-stat-label gsap-reveal">people still lack access to safe drinking water</div>
+      <p class="gsap-reveal">
+        Water is the silent thread connecting climate change, food security, and human survival.
+        For Thidar, this is not an abstract statistic &mdash; it is personal. Growing up in Myanmar,
+        she witnessed firsthand how water scarcity and flooding reshape communities, livelihoods,
+        and futures.
+      </p>
+      <p class="gsap-reveal">
+        Her doctoral research at Universit&eacute; Gustave Eiffel focuses on understanding
+        hydrological systems at their deepest level &mdash; how water moves through urban
+        landscapes, how nature-based solutions can mitigate flooding, and how we can build
+        cities that work with water instead of against it.
+      </p>
+    </div>
+    <div class="mission-photo gsap-reveal">
+      <img src="Data/images/608461876_1517566749318999_3883238587924686833_n.jpg"
+           alt="Thidar sitting on a cliff overlooking the ocean, reflecting on her mission"
+           width="500" height="450" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- Parallax Divider 2: Coastal Cliffs -->
+<div class="parallax-divider" aria-hidden="true">
+  <img src="Data/images/606068242_1517566219319052_391066932636403960_n.jpg"
+       alt="" loading="lazy" class="parallax-img">
+  <div class="parallax-overlay">
+    <div class="parallax-text">
+      <h3>Across 4 countries, one mission</h3>
+    </div>
+  </div>
+</div>
+
 <!-- Education Section -->
 <section id="education">
-  <div class="section-label reveal">Education</div>
-  <h2 class="section-title reveal reveal-delay-1">Academic Journey</h2>
-  <p class="section-desc reveal reveal-delay-2">A path flowing through four institutions across three countries, from civil engineering foundations to the frontiers of hydrological research.</p>
+  <div class="section-label gsap-reveal">Education</div>
+  <h2 class="section-title gsap-reveal">Academic Journey</h2>
+  <p class="section-desc gsap-reveal">A path flowing through four institutions across three countries, from civil engineering foundations to the frontiers of hydrological research.</p>
 
   <div class="timeline">
+    <div class="timeline-progress" id="timelineProgress"></div>
     <!-- PhD -->
-    <div class="timeline-item reveal">
+    <div class="timeline-item gsap-reveal">
       <div class="timeline-dot"></div>
       <div class="timeline-content">
-        <div class="timeline-date">Apr 2025 — Apr 2028</div>
-        <div class="timeline-school">Université Gustave Eiffel</div>
-        <div class="timeline-degree">Doctorant — Hydrology</div>
-        <div class="timeline-location">📍 France</div>
+        <div class="timeline-date">Apr 2025 &mdash; Apr 2028</div>
+        <div class="timeline-school">Universit&eacute; Gustave Eiffel</div>
+        <div class="timeline-degree">Doctorant &mdash; Hydrology</div>
+        <div class="timeline-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          France
+        </div>
       </div>
     </div>
 
     <!-- AgroParisTech -->
-    <div class="timeline-item reveal">
+    <div class="timeline-item gsap-reveal">
       <div class="timeline-dot"></div>
       <div class="timeline-content">
-        <div class="timeline-date">Sep 2023 — Sep 2024</div>
+        <div class="timeline-date">Sep 2023 &mdash; Sep 2024</div>
         <div class="timeline-school">AgroParisTech</div>
-        <div class="timeline-degree">Master of Science — Climate, Land Use & Ecosystem Services</div>
-        <div class="timeline-location">📍 France</div>
+        <div class="timeline-degree">Master of Science &mdash; Climate, Land Use &amp; Ecosystem Services</div>
+        <div class="timeline-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          France
+        </div>
       </div>
     </div>
 
     <!-- AIT -->
-    <div class="timeline-item reveal">
+    <div class="timeline-item gsap-reveal">
       <div class="timeline-dot"></div>
       <div class="timeline-content">
-        <div class="timeline-date">2021 — 2023</div>
+        <div class="timeline-date">2021 &mdash; 2023</div>
         <div class="timeline-school">Asian Institute of Technology</div>
-        <div class="timeline-degree">Master of Engineering — Water Resources Engineering</div>
+        <div class="timeline-degree">Master of Engineering &mdash; Water Resources Engineering</div>
         <div class="timeline-grade">GPA: 3.33 / 4.00</div>
-        <div class="timeline-location">📍 Thailand</div>
+        <div class="timeline-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Thailand
+        </div>
       </div>
     </div>
 
     <!-- TU Taungoo -->
-    <div class="timeline-item reveal">
+    <div class="timeline-item gsap-reveal">
       <div class="timeline-dot"></div>
       <div class="timeline-content">
-        <div class="timeline-date">2013 — 2019</div>
+        <div class="timeline-date">2013 &mdash; 2019</div>
         <div class="timeline-school">TU Taungoo</div>
-        <div class="timeline-degree">Bachelor of Engineering — Civil Engineering</div>
+        <div class="timeline-degree">Bachelor of Engineering &mdash; Civil Engineering</div>
         <div class="timeline-grade">GPA: 4.45 / 5.00</div>
-        <div class="timeline-location">📍 Myanmar</div>
+        <div class="timeline-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Myanmar
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Parallax Divider 3: Autumn Forest -->
+<div class="parallax-divider" aria-hidden="true">
+  <img src="Data/images/605708526_1517566629319011_8202503408310694683_n.jpg"
+       alt="" loading="lazy" class="parallax-img">
+  <div class="parallax-overlay">
+    <div class="parallax-text">
+      <h3>Understanding Earth's water, one watershed at a time</h3>
+    </div>
+  </div>
+</div>
+
 <!-- Experience Section -->
 <section id="experience">
-  <div class="section-label reveal">Research & Experience</div>
-  <h2 class="section-title reveal reveal-delay-1">Where Science<br>Meets Impact</h2>
-  <p class="section-desc reveal reveal-delay-2">From the Mekong River Basin to the green roofs of Paris — research that matters.</p>
+  <div class="section-label gsap-reveal">Research & Experience</div>
+  <h2 class="section-title gsap-reveal">Where Science<br>Meets Impact</h2>
+  <p class="section-desc gsap-reveal">From the Mekong River Basin to the green roofs of Paris &mdash; research that matters.</p>
 
   <div class="experience-grid">
     <!-- INRAE -->
-    <div class="exp-card reveal">
+    <div class="exp-card gsap-reveal">
       <div class="exp-org">INRAE</div>
       <div class="exp-role">Research Intern</div>
-      <div class="exp-meta">Mar 2024 — Aug 2024 · Paris, France</div>
+      <div class="exp-meta">Mar 2024 &mdash; Aug 2024 &middot; Paris, France</div>
       <div class="exp-desc">
-        Integrated atmospheric parameters into numerical models for green roof utilization, 
-        focusing on energy balance and water balance simulations that advance nature-based 
+        Integrated atmospheric parameters into numerical models for green roof utilization,
+        focusing on energy balance and water balance simulations that advance nature-based
         urban water management solutions.
       </div>
       <div class="exp-skills">
@@ -1296,13 +1991,13 @@ footer {
     </div>
 
     <!-- AIT RA -->
-    <div class="exp-card reveal reveal-delay-1">
+    <div class="exp-card gsap-reveal">
       <div class="exp-org">Asian Institute of Technology</div>
       <div class="exp-role">Research Assistant</div>
-      <div class="exp-meta">Apr 2023 — Jul 2023 · Thailand</div>
+      <div class="exp-meta">Apr 2023 &mdash; Jul 2023 &middot; Thailand</div>
       <div class="exp-desc">
-        Supported ecosystem services modeling and project management for a study on climate 
-        change impacts on food security and ecosystems across the Mekong region, including 
+        Supported ecosystem services modeling and project management for a study on climate
+        change impacts on food security and ecosystems across the Mekong region, including
         leading stakeholder workshops.
       </div>
       <div class="exp-skills">
@@ -1313,13 +2008,13 @@ footer {
     </div>
 
     <!-- SEI -->
-    <div class="exp-card reveal reveal-delay-2">
+    <div class="exp-card gsap-reveal">
       <div class="exp-org">Stockholm Environment Institute</div>
       <div class="exp-role">Research Intern</div>
-      <div class="exp-meta">Sep 2022 — Apr 2023 · Bangkok, Thailand</div>
+      <div class="exp-meta">Sep 2022 &mdash; Apr 2023 &middot; Bangkok, Thailand</div>
       <div class="exp-desc">
-        Led research on land use change impacts on wetland ecosystem services in the lower 
-        Songkhram River Basin (Ramsar site), co-authored a published paper, and modeled 
+        Led research on land use change impacts on wetland ecosystem services in the lower
+        Songkhram River Basin (Ramsar site), co-authored a published paper, and modeled
         carbon sequestration using InVEST and TerrSet tools.
       </div>
       <div class="exp-skills">
@@ -1331,13 +2026,13 @@ footer {
     </div>
 
     <!-- Volunteering -->
-    <div class="exp-card reveal reveal-delay-3">
+    <div class="exp-card gsap-reveal">
       <div class="exp-org">Community & Volunteering</div>
-      <div class="exp-role">Charity-Oriented Myanmar · AIESEC</div>
-      <div class="exp-meta">2019 — 2020 · Myanmar & Vietnam</div>
+      <div class="exp-role">Charity-Oriented Myanmar &middot; AIESEC</div>
+      <div class="exp-meta">2019 &mdash; 2020 &middot; Myanmar & Vietnam</div>
       <div class="exp-desc">
-        Organized environmental awareness workshops for local youth communities 
-        and participated in grassroots development initiatives, reflecting a deep 
+        Organized environmental awareness workshops for local youth communities
+        and participated in grassroots development initiatives, reflecting a deep
         commitment to social and environmental impact beyond academia.
       </div>
       <div class="exp-skills">
@@ -1351,12 +2046,12 @@ footer {
 
 <!-- Publication Section -->
 <section id="publication">
-  <div class="section-label reveal">Publication</div>
-  <h2 class="section-title reveal reveal-delay-1">Published Research</h2>
-  <p class="section-desc reveal reveal-delay-2">Peer-reviewed contributions advancing our understanding of environmental systems.</p>
+  <div class="section-label gsap-reveal">Publication</div>
+  <h2 class="section-title gsap-reveal">Published Research</h2>
+  <p class="section-desc gsap-reveal">Peer-reviewed contributions advancing our understanding of environmental systems.</p>
 
-  <div class="pub-card reveal reveal-delay-3">
-    <div class="pub-journal">ACS ES&T Water — Peer Reviewed</div>
+  <div class="pub-card gsap-reveal">
+    <div class="pub-journal">ACS ES&amp;T Water &mdash; Peer Reviewed</div>
     <h3 class="pub-title">Land Use Transitions in the Lower Songkhram River Basin in Mekong and Its Impact on Carbon Sequestration Potential</h3>
     <div class="pub-date">Published July 2, 2024</div>
     <a href="https://pubs.acs.org/doi/10.1021/acsestwater.4c00108" target="_blank" rel="noopener" class="pub-link">
@@ -1369,54 +2064,185 @@ footer {
   </div>
 </section>
 
-<!-- Skills Section -->
+<!-- Skills Section (Redesigned) -->
 <section id="skills">
-  <div class="section-label reveal">Expertise</div>
-  <h2 class="section-title reveal reveal-delay-1">Skills & Specializations</h2>
-  <p class="section-desc reveal reveal-delay-2">A multidisciplinary toolkit forged across engineering, environmental science, and computational modeling.</p>
+  <div class="section-label gsap-reveal">Expertise</div>
+  <h2 class="section-title gsap-reveal">Skills &amp; Specializations</h2>
+  <p class="section-desc gsap-reveal">A multidisciplinary toolkit forged across engineering, environmental science, and computational modeling.</p>
 
-  <div class="skills-container reveal reveal-delay-3">
-    <span class="skill-tag highlight">Hydrology</span>
-    <span class="skill-tag highlight">Water Engineering</span>
-    <span class="skill-tag highlight">Numerical Modeling</span>
-    <span class="skill-tag">Nature-Based Solutions</span>
-    <span class="skill-tag">Ecosystem Services</span>
-    <span class="skill-tag">Carbon Sequestration</span>
-    <span class="skill-tag">Climate Change Adaptation</span>
-    <span class="skill-tag">GIS & Remote Sensing</span>
-    <span class="skill-tag">InVEST Modeling</span>
-    <span class="skill-tag">TerrSet / Land Change Modeler</span>
-    <span class="skill-tag">Research Writing</span>
-    <span class="skill-tag">Data Analysis</span>
-    <span class="skill-tag">Green Infrastructure</span>
-    <span class="skill-tag">Energy & Water Balance</span>
-    <span class="skill-tag">Project Management</span>
-    <span class="skill-tag">Environmental Workshops</span>
+  <div class="skills-categories">
+    <div class="skill-category gsap-reveal">
+      <h3>Research &amp; Modeling</h3>
+      <div class="skills-container">
+        <span class="skill-tag highlight">Hydrology</span>
+        <span class="skill-tag highlight">Water Engineering</span>
+        <span class="skill-tag highlight">Numerical Modeling</span>
+        <span class="skill-tag">Ecosystem Services</span>
+        <span class="skill-tag">Carbon Sequestration</span>
+        <span class="skill-tag">InVEST Modeling</span>
+        <span class="skill-tag">TerrSet / Land Change Modeler</span>
+      </div>
+    </div>
+    <div class="skill-category gsap-reveal">
+      <h3>Technical &amp; Tools</h3>
+      <div class="skills-container">
+        <span class="skill-tag">GIS &amp; Remote Sensing</span>
+        <span class="skill-tag">Data Analysis</span>
+        <span class="skill-tag">Energy &amp; Water Balance</span>
+        <span class="skill-tag">Green Infrastructure</span>
+        <span class="skill-tag">Nature-Based Solutions</span>
+        <span class="skill-tag">Climate Change Adaptation</span>
+      </div>
+    </div>
+    <div class="skill-category gsap-reveal">
+      <h3>Communication &amp; Leadership</h3>
+      <div class="skills-container">
+        <span class="skill-tag">Research Writing</span>
+        <span class="skill-tag">Project Management</span>
+        <span class="skill-tag">Environmental Workshops</span>
+        <span class="skill-tag">Stakeholder Engagement</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Photo Gallery: "In the Field" -->
+<section id="gallery">
+  <div class="section-label gsap-reveal">In the Field</div>
+  <h2 class="section-title gsap-reveal">Beyond the Lab</h2>
+  <p class="section-desc gsap-reveal">Research that takes you to the edge of the world.</p>
+
+  <div class="gallery-grid">
+    <a href="Data/images/605637494_1517566669319007_2211441461359692543_n.jpg" class="gallery-item glightbox gsap-reveal" data-gallery="field" data-glightbox="description: Alpine meadows and autumn mountains">
+      <img src="Data/images/605637494_1517566669319007_2211441461359692543_n.jpg" alt="Thidar in an alpine meadow with autumn mountains" loading="lazy">
+      <div class="gallery-caption">Alpine meadows</div>
+    </a>
+    <a href="Data/images/606068242_1517566219319052_391066932636403960_n.jpg" class="gallery-item glightbox gsap-reveal" data-gallery="field" data-glightbox="description: Limestone coastal cliffs meeting turquoise waters">
+      <img src="Data/images/606068242_1517566219319052_391066932636403960_n.jpg" alt="Limestone coastal cliffs with turquoise sea" loading="lazy">
+      <div class="gallery-caption">Coastal formations</div>
+    </a>
+    <a href="Data/images/605785161_1517566025985738_5889307075634814624_n.jpg" class="gallery-item glightbox gsap-reveal" data-gallery="field" data-glightbox="description: Alpine glacier with snow-capped peaks and green meadows">
+      <img src="Data/images/605785161_1517566025985738_5889307075634814624_n.jpg" alt="Alpine glacier with snow-capped peaks" loading="lazy">
+      <div class="gallery-caption">Glacial landscapes</div>
+    </a>
+    <a href="Data/images/607343148_1517566495985691_6591289657000329051_n.jpg" class="gallery-item glightbox gsap-reveal" data-gallery="field" data-glightbox="description: Hiking through golden hillsides during fieldwork">
+      <img src="Data/images/607343148_1517566495985691_6591289657000329051_n.jpg" alt="Thidar hiking on a golden hillside" loading="lazy">
+      <div class="gallery-caption">Fieldwork trails</div>
+    </a>
+    <a href="Data/images/607138952_1517566702652337_2251794891022803735_n.jpg" class="gallery-item glightbox gsap-reveal" data-gallery="field" data-glightbox="description: Exploring pine forests and fern-covered trails">
+      <img src="Data/images/607138952_1517566702652337_2251794891022803735_n.jpg" alt="Thidar in a pine forest with ferns" loading="lazy">
+      <div class="gallery-caption">Forest research</div>
+    </a>
+    <a href="Data/images/605786261_1517566642652343_5791671825077675181_n.jpg" class="gallery-item glightbox gsap-reveal" data-gallery="field" data-glightbox="description: Overlooking green mountain ranges and valleys">
+      <img src="Data/images/605786261_1517566642652343_5791671825077675181_n.jpg" alt="Thidar overlooking green mountain ranges" loading="lazy">
+      <div class="gallery-caption">Mountain watersheds</div>
+    </a>
+    <a href="Data/images/608461876_1517566749318999_3883238587924686833_n.jpg" class="gallery-item glightbox gsap-reveal" data-gallery="field" data-glightbox="description: Contemplating the ocean from coastal cliffs">
+      <img src="Data/images/608461876_1517566749318999_3883238587924686833_n.jpg" alt="Thidar on a cliff overlooking the ocean" loading="lazy">
+      <div class="gallery-caption">Ocean perspectives</div>
+    </a>
+    <a href="Data/images/605708526_1517566629319011_8202503408310694683_n.jpg" class="gallery-item glightbox gsap-reveal" data-gallery="field" data-glightbox="description: Autumn foliage framing a mountain peak">
+      <img src="Data/images/605708526_1517566629319011_8202503408310694683_n.jpg" alt="Autumn foliage framing a mountain peak" loading="lazy">
+      <div class="gallery-caption">Seasonal transitions</div>
+    </a>
   </div>
 </section>
 
 <!-- Footer -->
 <footer>
-  <div class="footer-quote">
-    "Water is the driving force of all nature."
-  </div>
-  <div class="footer-attribution">— Leonardo da Vinci</div>
+  <!-- Wave SVG -->
+  <svg class="footer-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,40 C360,120 720,0 1080,60 C1260,90 1380,50 1440,40 L1440,120 L0,120 Z" fill="#0B3D3F" opacity="0.3"/>
+    <path d="M0,60 C240,100 600,20 960,70 C1200,100 1380,40 1440,60 L1440,120 L0,120 Z" fill="#0B3D3F" opacity="0.5"/>
+    <path d="M0,80 C300,60 600,100 900,70 C1100,50 1300,90 1440,80 L1440,120 L0,120 Z" fill="#0B3D3F"/>
+  </svg>
 
-  <div class="footer-bottom">
-    <span>&copy; 2025 Thidar Maung Maung. All rights reserved.</span>
-    <div class="footer-links">
-      <a href="https://pubs.acs.org/doi/10.1021/acsestwater.4c00108" target="_blank">Publication</a>
-      <a href="https://www.linkedin.com/in/thidar-maung-maung" target="_blank">LinkedIn</a>
+  <div class="footer-inner">
+    <div class="footer-quote">
+      "Water is the driving force of all nature."
+    </div>
+    <div class="footer-attribution">&mdash; Leonardo da Vinci</div>
+
+    <div class="footer-contact">
+      <a href="mailto:thidarmaungmaung@gmail.com">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email
+      </a>
+      <a href="https://www.linkedin.com/in/thidar-maung-maung" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://pubs.acs.org/doi/10.1021/acsestwater.4c00108" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Publication
+      </a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2025 Thidar Maung Maung. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="https://pubs.acs.org/doi/10.1021/acsestwater.4c00108" target="_blank">Research</a>
+        <a href="https://www.linkedin.com/in/thidar-maung-maung" target="_blank">LinkedIn</a>
+      </div>
     </div>
   </div>
 </footer>
 
+<!-- Birthday Easter Egg -->
+<div class="birthday-overlay" id="birthdayOverlay" aria-hidden="true">
+  <div class="birthday-content">
+    <button class="birthday-close" id="birthdayClose" aria-label="Close birthday message">&times;</button>
+    <span class="birthday-emoji">🎂</span>
+    <h2>Happy Birthday, Thidar!</h2>
+    <p>
+      To someone who crosses oceans and climbs mountains &mdash; not just in her research,
+      but in everything she does. You carry the quiet strength of rivers and the warmth
+      of the people whose lives you touch.
+    </p>
+    <p>
+      From Myanmar to Thailand to France, every step of your journey
+      has been a testament to your courage, curiosity, and heart.
+      The world's water systems are lucky to have you fighting for them.
+    </p>
+    <p>
+      Here's to another year of discoveries, adventures, and making the world
+      a little better &mdash; one watershed at a time.
+    </p>
+    <div class="birthday-sign">With love, from your friends &hearts;</div>
+  </div>
+</div>
+<canvas id="birthday-particles" aria-hidden="true"></canvas>
+
 <script>
+// ============================================
+// LENIS SMOOTH SCROLL + GSAP INTEGRATION
+// ============================================
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let lenis;
+if (!prefersReducedMotion) {
+  lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smooth: true,
+  });
+
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
+}
+
+gsap.registerPlugin(ScrollTrigger);
+
 // ============================================
 // WATER CANVAS ANIMATION
 // ============================================
 const canvas = document.getElementById('water-canvas');
 const ctx = canvas.getContext('2d');
+let canvasAnimating = true;
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
@@ -1426,9 +2252,7 @@ resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
 class WaterParticle {
-  constructor() {
-    this.reset();
-  }
+  constructor() { this.reset(); }
   reset() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
@@ -1454,35 +2278,468 @@ class WaterParticle {
 const particles = Array.from({ length: 60 }, () => new WaterParticle());
 
 function animateWater() {
+  if (!canvasAnimating) { requestAnimationFrame(animateWater); return; }
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   particles.forEach(p => { p.update(); p.draw(); });
   requestAnimationFrame(animateWater);
 }
-animateWater();
 
-// ============================================
-// NAVBAR SCROLL EFFECT
-// ============================================
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
+if (!prefersReducedMotion) {
+  animateWater();
+}
+
+// Pause canvas when tab hidden
+document.addEventListener('visibilitychange', () => {
+  canvasAnimating = !document.hidden;
 });
 
 // ============================================
-// SCROLL REVEAL ANIMATION
+// NAVBAR SCROLL EFFECT + ACTIVE SECTION
 // ============================================
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+const navbar = document.getElementById('navbar');
+const sections = document.querySelectorAll('section[id]');
+const navLinksAll = document.querySelectorAll('.nav-links a');
+
+ScrollTrigger.create({
+  trigger: document.body,
+  start: 'top -50',
+  onToggle: (self) => {
+    navbar.classList.toggle('scrolled', self.isActive);
+  }
+});
+
+// Active nav link tracking
+sections.forEach((section) => {
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top center',
+    end: 'bottom center',
+    onToggle: (self) => {
+      if (self.isActive) {
+        navLinksAll.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`.nav-links a[href="#${section.id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+      }
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+});
 
 // ============================================
-// DOWNLOAD RESUME FUNCTION
+// MOBILE NAV
+// ============================================
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('show');
+  navToggle.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', isOpen);
+  navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+});
+
+// Close on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('show');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// ============================================
+// HERO ANIMATIONS (GSAP)
+// ============================================
+if (!prefersReducedMotion) {
+  // Set initial hidden state (GSAP owns the lifecycle, not CSS)
+  gsap.set('.hero-tag, .hero-subtitle, .hero-typed-wrap, .hero-actions, #heroPhoto, .scroll-indicator', { opacity: 0 });
+
+  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' }});
+
+  // Split hero name text for character reveal
+  const heroName = document.getElementById('heroName');
+  let splitChars = null;
+  if (typeof SplitType !== 'undefined') {
+    const splitName = new SplitType(heroName, { types: 'chars', tagName: 'span' });
+    splitChars = splitName.chars;
+  }
+
+  heroTl
+    .from('.hero-tag', { opacity: 0, x: -40, duration: 0.8 }, 0.3)
+    .from(splitChars || heroName, {
+      opacity: 0,
+      y: 50,
+      rotateX: splitChars ? -40 : 0,
+      stagger: splitChars ? 0.03 : 0,
+      duration: 0.6
+    }, 0.5)
+    .from('.hero-subtitle', { opacity: 0, y: 20, filter: 'blur(8px)', duration: 0.8 }, 0.9)
+    .from('.hero-typed-wrap', { opacity: 0, duration: 0.5 }, 1.2)
+    .from('.hero-actions', { opacity: 0, y: 20, duration: 0.6 }, 1.1)
+    .from('#heroPhoto', { opacity: 0, scale: 0.85, duration: 1, ease: 'power2.out' }, 0.8)
+    .from('.scroll-indicator', { opacity: 0, duration: 0.6 }, 1.5);
+
+  // Floating background elements
+  gsap.to('.hero-bg-1', { y: -40, x: 20, duration: 20, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+  gsap.to('.hero-bg-2', { y: 30, x: -15, duration: 18, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: -5 });
+  gsap.to('.hero-bg-3', { y: -25, x: 15, duration: 16, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: -10 });
+} else {
+  // Show everything immediately if reduced motion
+  document.querySelectorAll('.hero-tag, .hero-name, .hero-subtitle, .hero-typed-wrap, .hero-actions, #heroPhoto, .scroll-indicator').forEach(el => {
+    el.style.opacity = '1';
+  });
+}
+
+// Typed.js subtitle
+if (typeof Typed !== 'undefined') {
+  new Typed('#heroTyped', {
+    strings: [
+      'Modeling water systems for sustainable cities',
+      'Nature-based solutions for urban flooding',
+      'From the Mekong to the Seine',
+      'Building resilience, one watershed at a time'
+    ],
+    typeSpeed: 40,
+    backSpeed: 25,
+    backDelay: 2500,
+    loop: true,
+    showCursor: true,
+    cursorChar: '|'
+  });
+}
+
+// ============================================
+// GSAP SCROLL ANIMATIONS (replaces IntersectionObserver)
+// ============================================
+if (!prefersReducedMotion) {
+  // Generic section reveals
+  gsap.utils.toArray('.gsap-reveal').forEach((el) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+  });
+
+  // Parallax divider images
+  gsap.utils.toArray('.parallax-img').forEach((img) => {
+    gsap.to(img, {
+      y: '15%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: img.parentElement,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+  });
+
+  // Parallax divider text fade
+  gsap.utils.toArray('.parallax-text h3').forEach((text) => {
+    gsap.fromTo(text,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: text,
+          start: 'top 75%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+  });
+
+  // Experience cards stagger
+  ScrollTrigger.create({
+    trigger: '.experience-grid',
+    start: 'top 80%',
+    once: true,
+    onEnter: () => {
+      gsap.fromTo('.exp-card',
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, stagger: 0.15, duration: 0.7, ease: 'power2.out' }
+      );
+    }
+  });
+
+  // Skill tags organic stagger
+  document.querySelectorAll('.skill-category').forEach((cat) => {
+    ScrollTrigger.create({
+      trigger: cat,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(cat.querySelectorAll('.skill-tag'),
+          { opacity: 0, scale: 0.8, y: 15 },
+          { opacity: 1, scale: 1, y: 0, stagger: { each: 0.05, from: 'random' }, duration: 0.5, ease: 'back.out(1.5)' }
+        );
+      }
+    });
+  });
+
+  // Gallery stagger
+  ScrollTrigger.create({
+    trigger: '.gallery-grid',
+    start: 'top 80%',
+    once: true,
+    onEnter: () => {
+      gsap.fromTo('.gallery-item',
+        { opacity: 0, y: 40, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, stagger: 0.1, duration: 0.6, ease: 'power2.out' }
+      );
+    }
+  });
+
+  // Timeline progress line
+  ScrollTrigger.create({
+    trigger: '.timeline',
+    start: 'top 80%',
+    end: 'bottom 50%',
+    scrub: true,
+    onUpdate: (self) => {
+      const progress = document.getElementById('timelineProgress');
+      if (progress) {
+        progress.style.height = (self.progress * 100) + '%';
+      }
+    }
+  });
+
+  // Timeline items from alternating sides
+  document.querySelectorAll('.timeline-item').forEach((item, i) => {
+    const fromX = i % 2 === 0 ? 60 : -60;
+    gsap.fromTo(item.querySelector('.timeline-content'),
+      { opacity: 0, x: fromX },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.7,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+  });
+
+} else {
+  // Show all content immediately for reduced motion
+  document.querySelectorAll('.gsap-reveal').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+}
+
+// ============================================
+// COUNTUP.JS — ANIMATED NUMBERS
+// ============================================
+const CountUp = countUp.CountUp;
+
+document.querySelectorAll('[data-countup]').forEach((el) => {
+  const target = parseFloat(el.getAttribute('data-countup'));
+  const decimals = el.hasAttribute('data-countup-decimal') ? parseInt(el.getAttribute('data-countup-decimal')) : 0;
+
+  const counter = new CountUp(el, target, {
+    startVal: 0,
+    duration: 2,
+    decimalPlaces: decimals,
+    enableScrollSpy: true,
+    scrollSpyOnce: true,
+  });
+
+  if (counter.error) {
+    console.warn('CountUp error:', counter.error);
+  }
+});
+
+// ============================================
+// GLIGHTBOX GALLERY
+// ============================================
+if (typeof GLightbox !== 'undefined') {
+  GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true });
+}
+
+// ============================================
+// CUSTOM CURSOR
+// ============================================
+if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
+  const cursorDot = document.querySelector('.cursor-dot');
+  const cursorRing = document.querySelector('.cursor-ring');
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  cursorDot.style.opacity = '1';
+  cursorRing.style.opacity = '1';
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorDot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+  });
+
+  function animateCursorRing() {
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
+    cursorRing.style.transform = `translate(${ringX - 18}px, ${ringY - 18}px)`;
+    requestAnimationFrame(animateCursorRing);
+  }
+  animateCursorRing();
+
+  // Hover effect on interactive elements
+  document.querySelectorAll('a, button, .gallery-item, .exp-card, .stat-card, .skill-tag').forEach(el => {
+    el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+  });
+}
+
+// ============================================
+// DARK MODE
+// ============================================
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.documentElement.setAttribute('data-theme', 'dark');
+}
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
+// ============================================
+// BIRTHDAY EASTER EGG
+// ============================================
+let heroClickCount = 0;
+let heroClickTimer = null;
+const heroNameEl = document.getElementById('heroName');
+const birthdayOverlay = document.getElementById('birthdayOverlay');
+const birthdayClose = document.getElementById('birthdayClose');
+const birthdayCanvas = document.getElementById('birthday-particles');
+
+heroNameEl.addEventListener('click', () => {
+  heroClickCount++;
+  clearTimeout(heroClickTimer);
+  heroClickTimer = setTimeout(() => { heroClickCount = 0; }, 2000);
+
+  if (heroClickCount >= 3) {
+    heroClickCount = 0;
+    showBirthdayEasterEgg();
+  }
+});
+
+function showBirthdayEasterEgg() {
+  birthdayOverlay.classList.add('active');
+  birthdayOverlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  gsap.to(birthdayOverlay, { opacity: 1, duration: 0.5 });
+  gsap.from('.birthday-content', { scale: 0.9, y: 30, duration: 0.6, ease: 'back.out(1.5)', delay: 0.2 });
+
+  // Confetti on birthday canvas
+  startBirthdayConfetti();
+}
+
+function closeBirthdayEasterEgg() {
+  gsap.to(birthdayOverlay, {
+    opacity: 0,
+    duration: 0.4,
+    onComplete: () => {
+      birthdayOverlay.classList.remove('active');
+      birthdayOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      stopBirthdayConfetti();
+    }
+  });
+}
+
+birthdayClose.addEventListener('click', closeBirthdayEasterEgg);
+birthdayOverlay.addEventListener('click', (e) => {
+  if (e.target === birthdayOverlay) closeBirthdayEasterEgg();
+});
+
+// Simple confetti system
+let confettiParticles = [];
+let confettiAnimating = false;
+const bCtx = birthdayCanvas.getContext('2d');
+
+function startBirthdayConfetti() {
+  birthdayCanvas.width = window.innerWidth;
+  birthdayCanvas.height = window.innerHeight;
+  birthdayCanvas.style.display = 'block';
+  confettiAnimating = true;
+  confettiParticles = [];
+
+  const colors = ['#D4A574', '#E8CDB0', '#1A6B6D', '#2D9B9E', '#4A7C59', '#6DAE7E', '#FFD700', '#FF69B4'];
+
+  for (let i = 0; i < 150; i++) {
+    confettiParticles.push({
+      x: Math.random() * birthdayCanvas.width,
+      y: -20 - Math.random() * birthdayCanvas.height,
+      w: Math.random() * 10 + 4,
+      h: Math.random() * 6 + 3,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      speedY: Math.random() * 3 + 1.5,
+      speedX: (Math.random() - 0.5) * 2,
+      rotation: Math.random() * 360,
+      rotationSpeed: (Math.random() - 0.5) * 8,
+      opacity: Math.random() * 0.5 + 0.5,
+    });
+  }
+
+  animateConfetti();
+}
+
+function animateConfetti() {
+  if (!confettiAnimating) return;
+  bCtx.clearRect(0, 0, birthdayCanvas.width, birthdayCanvas.height);
+
+  confettiParticles.forEach(p => {
+    p.y += p.speedY;
+    p.x += p.speedX;
+    p.rotation += p.rotationSpeed;
+
+    bCtx.save();
+    bCtx.translate(p.x, p.y);
+    bCtx.rotate((p.rotation * Math.PI) / 180);
+    bCtx.globalAlpha = p.opacity;
+    bCtx.fillStyle = p.color;
+    bCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+    bCtx.restore();
+
+    if (p.y > birthdayCanvas.height + 20) {
+      p.y = -20;
+      p.x = Math.random() * birthdayCanvas.width;
+    }
+  });
+
+  requestAnimationFrame(animateConfetti);
+}
+
+function stopBirthdayConfetti() {
+  confettiAnimating = false;
+  bCtx.clearRect(0, 0, birthdayCanvas.width, birthdayCanvas.height);
+  birthdayCanvas.style.display = 'none';
+}
+
+// ============================================
+// DOWNLOAD RESUME
 // ============================================
 function downloadResume() {
   const a = document.createElement('a');
@@ -1494,14 +2751,18 @@ function downloadResume() {
 }
 
 // ============================================
-// SMOOTH SCROLL FOR NAV LINKS
+// SMOOTH SCROLL FOR NAV LINKS (Lenis-compatible)
 // ============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (lenis) {
+        lenis.scrollTo(target, { offset: -80 });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   });
 });
